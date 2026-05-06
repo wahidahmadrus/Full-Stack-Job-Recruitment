@@ -1,15 +1,44 @@
+:root {
+    --bg: #f5f7fb;
+    --surface: #ffffff;
+    --surface-muted: #eef3f8;
+    --text: #182230;
+    --muted: #65758b;
+    --primary: #0f766e;
+    --primary-dark: #115e59;
+    --accent: #f97316;
+    --border: #d9e2ec;
+    --shadow: 0 20px 55px rgba(15, 23, 42, 0.1);
+    --radius: 8px;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-size: 16px;
-    font-family: 'Times New Roman', Times, serif;
     scroll-behavior: smooth;
 }
 
 body {
     width: 100%;
     min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 32rem),
+        linear-gradient(180deg, #fbfcfe 0%, var(--bg) 45%, #eef3f8 100%);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button,
+a {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 a {
@@ -17,11 +46,14 @@ a {
     color: inherit;
 }
 
-@keyframes fadeIn {
-    0% {
-      opacity: 0.5;
+.app-shell {
+    position: relative;
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+    .app-shell {
+        width: min(100% - 20px, 1180px);
     }
-    100% {
-      opacity: 1;
-    }
-  }
+}

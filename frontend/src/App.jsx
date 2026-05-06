@@ -14,7 +14,7 @@ const App = () => {
   const [userEmail, setUserEmail] = useState('');
   const [isEmployer, setIsEmployer] = useState(false);
   return (
-    <div className='container position-relative'>
+    <div className='app-shell'>
       {showLogin && <LoginPopup 
         setShowLogin={setShowLogin} 
         setChangeProfile={setChangeProfile} 

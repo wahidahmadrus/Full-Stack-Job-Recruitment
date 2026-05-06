@@ -6,7 +6,8 @@ const Footer = () => {
     <footer className='footer' id="contact">
       <div className='footer-container'>
       <div className='social-media'>
-          <h1>Follow US</h1>
+          <h1>Job Recruitment</h1>
+          <p>Connecting candidates and employers with focused hiring tools.</p>
           <div className='social-icons'>
             <a href="#"><i className="fa-brands fa-facebook"></i></a>
             <a href="#"><i className="fa-brands fa-twitter"></i></a>
@@ -18,12 +19,12 @@ const Footer = () => {
           <p>123 Main Street, City, State, Zip Code</p>
         </div>
         <div className='contact-us'>
-          <h1><i className="fa-solid fa-address-book"></i>Contact US</h1>
+          <h1><i className="fa-solid fa-address-book"></i>Contact</h1>
           <p><i className="fa-solid fa-phone"></i>Phone: +91 1234567890</p>
           <p><i className="fa-solid fa-envelope"></i>Email: username@example.com</p>
         </div>
       </div>
-      <div className='text-center'>&copy; 2024 Job Recruitment</div>
+      <div className='footer-bottom'>&copy; 2026 Job Recruitment</div>
     </footer>
   )
 }

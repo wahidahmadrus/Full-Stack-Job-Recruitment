@@ -3,6 +3,7 @@ import './Navbar.css';
 import { Link, useLocation } from 'react-router-dom';
 import { assets } from '../../assets/assets';
 import axios from 'axios';
+import API_URL from '../../api';
 
 const Navbar = ({ setShowLogin, changeProfile, setChangeProfile, isJobPost, setIsJobPost, isEmployer, setIsEmployer }) => {
   const token = localStorage.getItem('token');
@@ -31,7 +32,7 @@ const Navbar = ({ setShowLogin, changeProfile, setChangeProfile, isJobPost, setI
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/user-data', {
+      const response = await axios.get(`${API_URL}/user-data`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.status === 200) {
@@ -48,7 +49,7 @@ const Navbar = ({ setShowLogin, changeProfile, setChangeProfile, isJobPost, setI
 
     try {
       const newStatus = isEmployer ? 'No' : 'Yes';
-      const response = await axios.post('http://localhost:3000/update-is-employer', {
+      const response = await axios.post(`${API_URL}/update-is-employer`, {
         token,
         isEmployer: newStatus,
       });
@@ -69,7 +70,10 @@ const Navbar = ({ setShowLogin, changeProfile, setChangeProfile, isJobPost, setI
   return (
     <nav className='navbar'>
       <div className='navbar-logo-container'>
-        <Link to='/'>Job Recruitment</Link>
+        <Link to='/' className='navbar-logo'>
+          <span>JR</span>
+          Job Recruitment
+        </Link>
       </div>
       <div className='navbar-links'>
         {isJobPost ? (
@@ -93,12 +97,12 @@ const Navbar = ({ setShowLogin, changeProfile, setChangeProfile, isJobPost, setI
             Login
           </button>
         ) : (
-          <div className='profile-container'>
-            <div className='profile-icon-wrapper' onClick={() => setShowProfileCard(!showProfileCard)}>
-              {!showLogout && <img src={assets.profile} onMouseOver={() => setShowLogout(true)} alt="Profile" className='profile-icon' />}
+          <div className='profile-container' onMouseLeave={() => setShowLogout(false)}>
+            <div className='profile-icon-wrapper' onClick={() => setShowLogout(!showLogout)}>
+              <img src={assets.profile} onMouseOver={() => setShowLogout(true)} alt="Profile" className='profile-icon' />
             </div>
             <div className='profile-dropdown'>
-              {showLogout && <button onClick={logout} onMouseOut={() => setShowLogout(false)} className='logout-button'><img className='logout-icon' src={assets.logout} alt="" /> Logout</button>}
+              {showLogout && <button onClick={logout} className='logout-button'><img className='logout-icon' src={assets.logout} alt="" /> Logout</button>}
             </div>
           </div>
         )}

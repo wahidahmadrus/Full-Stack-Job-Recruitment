@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -5,9 +6,9 @@ const cors = require('cors');
 const {Login, Job } = require('../Model/Models');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const uri = "mongodb+srv://wahidahamd:12345688@cluster0.4adehye.mongodb.net/Job_Recruitment";
-// const uri = "mongodb://localhost:27017/"
-const port = 3000;
+const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/Job_Recruitment";
+const jwtSecret = process.env.JWT_SECRET || "dev-secret-change-me";
+const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -45,7 +46,7 @@ app.post('/signup', async (req, res) => {
       await newUser.save();
 
       // Create a JWT token
-      const token = jwt.sign({ email }, 'random#secret', { expiresIn: '1h' });
+      const token = jwt.sign({ email }, jwtSecret, { expiresIn: '1h' });
 
       // Send the token in the response
       res.status(201).json({ token, message: 'User registered successfully.' });
@@ -64,7 +65,7 @@ app.post('/login', async (req, res) => {
 
       // Check if user exists and password is correct
       if (user && await bcrypt.compare(password, user.password)) {
-          const token = jwt.sign({ email }, 'random#secret', { expiresIn: '1h' });
+          const token = jwt.sign({ email }, jwtSecret, { expiresIn: '1h' });
           res.json({ token });
       } else {
           res.status(401).json({ error: 'Incorrect email or password' });
@@ -125,7 +126,7 @@ app.post('/update-is-employer', async (req, res) => {
       }
 
       // Verify and decode the token
-      const decoded = jwt.verify(token, 'random#secret');
+      const decoded = jwt.verify(token, jwtSecret);
       const userEmail = decoded.email;
 
       // Ensure userEmail is present
@@ -157,7 +158,7 @@ app.post('/update-is-employer', async (req, res) => {
 app.get('/user-data', async (req, res) => {
   try {
     const token = req.headers.authorization.split(' ')[1]; // Extract token from Authorization header
-    const decoded = jwt.verify(token, 'random#secret');
+    const decoded = jwt.verify(token, jwtSecret);
     const userEmail = decoded.email;
 
     const user = await Login.findOne({ email: userEmail });

@@ -1,179 +1,114 @@
 .jobPost {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 0.82fr 1fr;
+    gap: 30px;
+    align-items: start;
+    margin: 20px 0 42px;
+    padding: 34px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.jobPost-heading {
+    position: sticky;
+    top: 20px;
+    padding: 28px;
+    border-radius: var(--radius);
+    background: var(--surface-muted);
+}
+
+.jobPost-heading span {
+    display: inline-flex;
+    margin-bottom: 14px;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.jobPost-heading h1 {
+    margin-bottom: 12px;
+    color: var(--text);
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1;
+    font-weight: 900;
+}
+
+.jobPost-heading p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.jobPost form {
+    display: grid;
     gap: 10px;
-    border-radius: 50px;
-    padding: 30px;
-    background-color: rgb(0, 0, 0);
-    color: white;
-    margin: 20px auto;
 }
+
 .jobPost form label {
-    font-size: 20px;
-    font-weight: bold;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 900;
 }
 
-.jobPost form input {
-    border: none;
-    width: 450px;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    border: 4px solid black;
-}
-
-.jobPost form textarea  {
-    border: none;
-    padding: 10px;
-    width: 450px;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    border: 4px solid black;
-}
-
-.jobPost form input:focus, .jobPost form textarea:focus {
+.jobPost form input,
+.jobPost form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 13px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #fbfcfe;
+    color: var(--text);
     outline: none;
-    border: 4px solid tomato;
 }
 
-.jobPost form input:first-of-type {
-    border-radius: 20px 20px 0 0;
+.jobPost form textarea {
+    min-height: 140px;
+    resize: vertical;
 }
 
+.jobPost form input:focus,
+.jobPost form textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+}
 
 .jobPost form button {
-    width: 450px;
-    padding: 10px 0;
+    min-height: 50px;
+    margin-top: 6px;
+    border: 1px solid var(--primary);
+    border-radius: var(--radius);
+    background: var(--primary);
     color: white;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 0 0 20px 20px;
-    background-color: transparent;
+    font-weight: 900;
+    cursor: pointer;
 }
 
 .jobPost form button:hover {
-    border: 4px solid tomato;
+    background: var(--primary-dark);
+    transform: translateY(-1px);
 }
-@media (min-width: 0px) {
+
+@media (max-width: 840px) {
     .jobPost {
-        width: 250px;
-        gap: 5px;
+        grid-template-columns: 1fr;
+        padding: 22px;
     }
-    .jobPost form label {
-        font-size: 8px;
-    }
-    
-    .jobPost form input {
-        width: 210px;
-        border: 2px solid black;
-        font-size: 8px;
-    }
-    
-    .jobPost form textarea  {
-        width: 210px;
-        border: 2px solid black;
-        font-size: 8px;
-    }
-    
-    .jobPost form input:focus, .jobPost form textarea:focus {
-        outline: none;
-        border: 2px solid tomato;
-    }
-    
-    .jobPost form input:first-of-type {
-        border-radius: 20px 20px 0 0;
-    }
-    
-    
-    .jobPost form button {
-        width: 210px;
-        border: 2px solid black;
-        outline: 1px solid rgb(255, 255, 255);
-    }
-    
-    .jobPost form button:hover {
-        outline: none;
-        border: 2px solid tomato;
-    }
-}
-@media (min-width: 480px) {
-    .jobPost {
-        width: 500px;
-    }
-    .jobPost form label {
-        font-size: 12px;
-    }
-    
-    .jobPost form input {
-        width: 450px;
-        border: 3px solid black;
-        font-size: 14px;
-    }
-    
-    .jobPost form textarea  {
-        width: 450px;
-        border: 3px solid black;
-        font-size: 14px;
-    }
-    
-    .jobPost form input:focus, .jobPost form textarea:focus {
-        outline: none;
-        border: 4px solid tomato;
-    }
-    
-    .jobPost form input:first-of-type {
-        border-radius: 20px 20px 0 0;
-    }
-    
-    
-    .jobPost form button {
-        width: 450px;
-        border: 3px solid black;
-        outline: 1px solid rgb(255, 255, 255);
-    }
-    
-    .jobPost form button:hover {
-        outline: none;
-        border: 3px solid tomato;
+
+    .jobPost-heading {
+        position: static;
     }
 }
 
-@media (min-width: 750px) {
+@media (max-width: 520px) {
     .jobPost {
-        width: 600px;
+        padding: 16px;
     }
-    .jobPost form label {
-        font-size: 16px;
-    }
-    
-    .jobPost form input {
-        width: 500px;
-        font-size: 20px;
-    }
-    
-    .jobPost form textarea  {
-        width: 500px;
-        font-size: 20px;
-    }
-    
-    .jobPost form input:focus, .jobPost form textarea:focus {
-        outline: none;
-        border: 4px solid tomato;
-    }
-    
-    .jobPost form input:first-of-type {
-        border-radius: 20px 20px 0 0;
-    }
-    
-    
-    .jobPost form button {
-        width: 500px;
-        border: 4px solid black;
-        outline: 1px solid rgb(255, 255, 255);
-    }
-    
-    .jobPost form button:hover {
-        outline: none;
-        border: 4px solid tomato;
+
+    .jobPost-heading {
+        padding: 20px;
     }
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './JobPost.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../../api.js';
 
 const JobPost = ({ userEmail }) => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const JobPost = ({ userEmail }) => {
     e.preventDefault();
     const payload = { ...formData, userEmail };
     try {
-      const response = await axios.post('http://localhost:3000/job-post', payload, {
+      const response = await axios.post(`${API_URL}/job-post`, payload, {
         headers: { 'Content-Type': 'application/json' },
       });
       navigate('/');
@@ -36,22 +37,26 @@ const JobPost = ({ userEmail }) => {
 
   return (
     <div className='jobPost'>
-      <h1>Job Post</h1>
+      <div className='jobPost-heading'>
+        <span>Employer workspace</span>
+        <h1>Post a new role</h1>
+        <p>Create a clear listing with the details candidates need before they apply.</p>
+      </div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">JobTitle</label><br />
-        <input name='title' id='title' type="text" value={formData.title} onChange={handleChange} /><br />
+        <label htmlFor="title">Job title</label>
+        <input name='title' id='title' type="text" value={formData.title} onChange={handleChange} />
 
-        <label htmlFor="description">Job Description</label><br />
-        <textarea name="description" id="description" rows="6" value={formData.description} onChange={handleChange}></textarea><br />
+        <label htmlFor="description">Job description</label>
+        <textarea name="description" id="description" rows="6" value={formData.description} onChange={handleChange}></textarea>
 
-        <label htmlFor="requirements">Job Requirements</label><br />
-        <textarea name="requirements" id="requirements" rows="6" value={formData.requirements} onChange={handleChange}></textarea><br />
+        <label htmlFor="requirements">Requirements</label>
+        <textarea name="requirements" id="requirements" rows="6" value={formData.requirements} onChange={handleChange}></textarea>
 
-        <label htmlFor="location">Location</label><br />
-        <input name='location' id='location' type="text" value={formData.location} onChange={handleChange} /><br />
+        <label htmlFor="location">Location</label>
+        <input name='location' id='location' type="text" value={formData.location} onChange={handleChange} />
 
-        <label htmlFor="apply">Apply Link</label><br />
-        <input type="text" name='apply' id='apply' value={formData.apply} onChange={handleChange} /><br />
+        <label htmlFor="apply">Apply link</label>
+        <input type="text" name='apply' id='apply' value={formData.apply} onChange={handleChange} />
 
         <button type="submit">Post Job</button>
       </form> 

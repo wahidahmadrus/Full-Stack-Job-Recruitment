@@ -1,74 +1,88 @@
 .footer {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(78, 122, 218);
-    border-radius: 10px 10px 0 0;
-    padding: 40px;
+    margin: 48px 0 18px;
+    padding: 32px;
+    border-radius: var(--radius);
+    background: #111827;
     color: white;
 }
-.footer h1 {
-    font-size: 16px;
-    color: rgb(248, 250, 252);
-    font-weight: bold;
-}
+
 .footer-container {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 28px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.footer h1 {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 900;
 }
-.social-media {
+
+.footer p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.social-media,
+.address,
+.contact-us {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
+
 .social-icons {
     display: flex;
-    gap: 20px;
+    gap: 10px;
+    margin-top: 18px;
 }
-.social-icons a:hover {
-    color: tomato;
-}
-.address {
-    display: flex;
-    flex-direction: column;
-}
-.address p {
-    display: flex;
+
+.social-icons a {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 14px;
-}
-.contact-us{
-    display: flex;
-    flex-direction: column;
     justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius);
+    color: white;
 }
-.contact-us h1, .address h1 {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+
+.social-icons a:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-1px);
 }
+
+.address p,
 .contact-us p {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
 }
-@media (max-width: 1080px) {
+
+.footer-bottom {
+    padding-top: 22px;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 14px;
+    text-align: center;
+}
+
+@media (max-width: 840px) {
     .footer-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .address {
-        align-items: center;
-    }
-    .contact-us{
-        align-items: center;
+        grid-template-columns: 1fr;
     }
 }
 
-@media (max-width: 600px) {
-    .address p, .contact-us p {
-        font-size: 8px;
+@media (max-width: 520px) {
+    .footer {
+        padding: 24px;
     }
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './LoginPopup.css';
 import { assets } from '../../assets/assets.js';
 import axios from 'axios';
+import API_URL from '../../api.js';
 
 const LoginPopup = ({ setShowLogin, setChangeProfile, setUserEmail}) => {
   const [login, setLogin] = useState("login");
@@ -44,7 +45,7 @@ const LoginPopup = ({ setShowLogin, setChangeProfile, setUserEmail}) => {
     const url = login === "login" ? '/login' : '/signup';
 
     try {
-      const response = await axios.post(`http://localhost:3000${url}`, formData, {
+      const response = await axios.post(`${API_URL}${url}`, formData, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -69,9 +70,12 @@ const LoginPopup = ({ setShowLogin, setChangeProfile, setUserEmail}) => {
 
   return (
     <div className='popup'>
-      <form className='login container' onSubmit={handleSubmit}>
+      <form className='login' onSubmit={handleSubmit}>
         <div className='login-title'>
-          <h2>{login}</h2>
+          <div>
+            <span>Welcome</span>
+            <h2>{login}</h2>
+          </div>
           <img onClick={() => setShowLogin(false)} src={assets.cross} alt="close" />
         </div>
         {login === "Sign up" && <input name='name' type="text" placeholder='Enter Your Name' value={formData.name} onChange={handleChange} />}

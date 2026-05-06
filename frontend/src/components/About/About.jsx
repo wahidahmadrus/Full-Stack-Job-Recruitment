@@ -2,16 +2,31 @@ import React from 'react'
 import './About.css'
 const About = () => {
   return (
-    <div className='about' id="about">
-      <h2>About Job Recruitment</h2>
+    <section className='about' id="about">
+      <div>
+        <span>Why teams use us</span>
+        <h2>Recruitment that keeps momentum.</h2>
+      </div>
+      <div className='about-content'>
         <p>
-            At Job Recruitment, we understand the challenges of finding the right job or the right candidate. That's why we've dedicated ourselves to bridging the gap between employers and job seekers, creating a seamless and efficient recruitment experience.<br /><br />
-            Our team of experienced professionals has a deep understanding of the job market and the unique needs of various industries. We leverage cutting-edge technology and data-driven insights to match the right talent with the right opportunities, ensuring a perfect fit for both parties.<br /><br />
-            Whether you're an employer seeking top-notch candidates or a job seeker looking for your dream career, Job Recruitment is your trusted partner. We pride ourselves on our personalized approach, tailoring our services to meet your specific requirements and providing guidance every step of the way.<br /><br />
-            At the core of our mission is a commitment to excellence, integrity, and innovation. We continuously strive to enhance our processes and stay ahead of industry trends, ensuring that our clients receive the best possible service.
-            Join the Job Recruitment community today and unlock a world of opportunities. Let us be your guide on the path to success. 
+          Job Recruitment helps candidates and employers move through hiring with less friction. Employers can publish roles, candidates can search openings quickly, and both sides get a simpler path to the right match.
         </p>
-    </div>
+        <div className='about-grid'>
+          <article>
+            <strong>Focused search</strong>
+            <p>Find roles by title, skill, description, or location.</p>
+          </article>
+          <article>
+            <strong>Employer tools</strong>
+            <p>Post openings and manage listings from one place.</p>
+          </article>
+          <article>
+            <strong>Direct apply</strong>
+            <p>Send candidates straight to the application destination.</p>
+          </article>
+        </div>
+      </div>
+    </section>
   )
 }
 
